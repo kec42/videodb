@@ -42,7 +42,7 @@ class TestIMDB extends UnitTestCase
         $this->assertPattern('#|Star Wars: Episode I - The Phantom Menace#', $data['origtitle']);
 
         $this->assertEqual($data['year'], 1999);
-        $this->assertPattern('#http://ia.*imdb.com/.*.jpg#', $data['coverurl']);
+        $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['mpaa'], 'Rated PG for sci-fi action/violence');
         # bbfc no longer appears on main page
         # test disabled
@@ -230,7 +230,7 @@ class TestIMDB extends UnitTestCase
         $this->assertPattern('/Star Trek: The Next Generation|Raumschiff Enterprise - Das nächste Jahrhundert/', $data['title']);
         $this->assertEqual($data['subtitle'], 'Q Who?');
         $this->assertPattern('/19\d\d/', $data['year']);
-        $this->assertPattern('#http://ia.*imdb.com/.*.jpg#', $data['coverurl']);
+        $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['director'], 'Rob Bowman');
         $this->assertTrue($data['rating'] >= 7);
         $this->assertTrue($data['rating'] <= 9);
@@ -270,7 +270,7 @@ class TestIMDB extends UnitTestCase
         $this->assertPattern('/Inspector Lynley/', $data['title']);
         $this->assertEqual($data['subtitle'], 'Playing for the Ashes');
         $this->assertPattern('/200\d/', $data['year']);
-        $this->assertPattern('#http://ia.*imdb.com/.*.jpg#', $data['coverurl']);
+        $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['director'], 'Richard Spence');
         $this->assertTrue($data['rating'] >= 5);
         $this->assertTrue($data['rating'] <= 8);
