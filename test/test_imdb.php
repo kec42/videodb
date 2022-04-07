@@ -173,7 +173,7 @@ class TestIMDB extends UnitTestCase
         #echo '<pre>';dump($data);echo '</pre>';
 
         $this->assertPattern("/Zach Braff::Dr. John 'J.D.' Dorian \(.+?\)::imdb:nm0103785.+Mona Weiss::Nurse \(.+?\)::imdb:nm2032293/is", $data['cast']);
-        $this->assertPattern('/Sacred Heart/i', $data[plot]);
+        $this->assertPattern('/Sacred Heart/i', $data['plot']);
     }
 
     /**
@@ -247,7 +247,7 @@ class TestIMDB extends UnitTestCase
         $this->assertTrue($data['runtime'] >= 40);
         $this->assertTrue($data['runtime'] <= 50);
 
-        $this->assertPattern('/Q pays the Enterprise another visit/', $data[plot]);
+        $this->assertPattern('/Q pays the Enterprise another visit/', $data['plot']);
     }
 
     function testSeriesEpisode2()
