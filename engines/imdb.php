@@ -275,7 +275,7 @@ function imdbData($imdbID)
     $data['coverurl'] = imdbGetCoverURL($resp['data']);
 
     // MPAA Rating
-    preg_match('/Motion Picture Rating \(MPAA\).+?(Rated.+?)</is', $resp['data'], $ary);
+    preg_match('/Motion Picture Rating \(MPAA\)<\/a>.+?(Rated.+?)</is', $resp['data'], $ary);
     $data['mpaa'] = trim($ary[1]);
 
     // Runtime
