@@ -33,12 +33,14 @@ class TestIMDB extends UnitTestCase
 
         $this->assertEqual($data['istv'], '');
         $this->assertEqual($data['title'], 'Star Wars: Episode I');
+
+        # English/Deutsch/Dansk
         $this->assertPattern('#The Phantom Menace|Die dunkle Bedrohung|Den usynlige fjende#', $data['subtitle']);
-        
-        // Since title is delivered by country htis can no longer be tested this way
-        $this->assertTrue( strlen($data['subtitle']) > 10 );
+
         # new test: origtitle
-        $this->assertEqual($data['origtitle'], 'Star Wars: Episode I - The Phantom Menace');
+        # English/Others
+        $this->assertPattern('#|Star Wars: Episode I - The Phantom Menace#', $data['origtitle']);
+
         $this->assertEqual($data['year'], 1999);
         $this->assertPattern('#http://ia.*imdb.com/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['mpaa'], 'Rated PG for sci-fi action/violence');
