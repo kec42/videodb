@@ -27,7 +27,9 @@ class TestIMDB extends UnitTestCase
         $data = engineGetData($id, 'imdb');
         $this->assertTrue(sizeof($data) > 0);
 
-        #echo '<pre>';dump($data);echo '</pre>';
+        echo '<pre>';
+        dump($data);
+        echo '</pre>';
 
         $this->assertEqual($data['istv'], '');
         $this->assertEqual($data['title'], 'Star Wars: Episode I');
