@@ -240,7 +240,7 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['tvseries_id'], '0092455');
         $this->assertPattern('/Star Trek: The Next Generation|Raumschiff Enterprise - Das nächste Jahrhundert/', $data['title']);
         $this->assertEqual($data['subtitle'], 'Q Who');
-        $this->assertEquals($data['year'], '1998');
+        $this->assertEqual($data['year'], '1998');
         $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['director'], 'Rob Bowman');
         $this->assertTrue($data['rating'] >= 7);
