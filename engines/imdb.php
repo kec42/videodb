@@ -232,7 +232,7 @@ function imdbData($imdbID, $cache, $param, $reload)
         $data['istv'] = 1;
 
         # find id of Series
-        preg_match('/<meta property="imdb:pageConst" content="tt(\d+)"\/>/si', $resp['data'], $ary);
+        preg_match('#<a data-testid="hero-subnav-bar-all-episodes-button".+? href="/title/tt(\d+)/.+?</a>#si', $resp['data'], $ary);
         $data['tvseries_id'] = trim($ary[1]);
     }
 
