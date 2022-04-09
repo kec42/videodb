@@ -368,7 +368,7 @@ class TestIMDB extends UnitTestCase
 #       dump($data);
 
         $this->assertEqual($data['id'], 'imdb:0454921');
-        $this->assertEqual($data['title', 'Das Streben nach Glück');
+        $this->assertEqual($data['title'], 'Das Streben nach Glück');
     }
 
     /**
