@@ -29,10 +29,10 @@ class TestIMDB extends UnitTestCase
         $param = ['header' => ['Accept-Language' => 'en-US;q=1.0']];
 
         // Star Wars: Episode I
-        // http://imdb.com/title/tt0120915/
+        // https://imdb.com/title/tt0120915/
         $id = '0120915';
         $data = engineGetData($id, 'imdb', $cache, $param);
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';
         #dump($data);
@@ -74,61 +74,46 @@ class TestIMDB extends UnitTestCase
         $this->assertTrue(count($cast) > 90);
 
         $this->assertPattern('/Two Jedi escape a hostile blockade to find allies/', $data['plot']);
-
-
-#   Array ( [title] => Star Wars: Episode I [subtitle] => The Phantom Menace [year] => 1999 [coverurl] => http://ia.imdb.com/media/imdb/01/I/47/66/60m.jpg [mpaa] => Rated PG for sci-fi action/violence. [bbfc] => U [runtime] => 133 [director] => George Lucas [rating] => 6.3 [country] => USA [language] => english [genres] => Array ( [0] => Action [1] => Adventure [2] => Fantasy [3] => Sci-Fi ) [cast] => Liam Neeson::Qui-Gon Jinn::imdb:nm0000553 Ewan McGregor::Obi-Wan Kenobi::imdb:nm0000191 Natalie Portman::Queen Padmé Amidala::imdb:nm0000204 Jake Lloyd::Anakin Skywalker::imdb:nm0005157 Pernilla August::Shmi Skywalker::imdb:nm0000278 Frank Oz::Yoda::imdb:nm0000568 Ian McDiarmid::Senator Palpatine::imdb:nm0001519 Oliver Ford Davies::Gov. Sio Bibble::imdb:nm0203882 Ray Park::Darth Maul::imdb:nm0661917 Hugh Quarshie::Capt. Panaka::imdb:nm0702934 Ahmed Best::Jar Jar Binks::imdb:nm0078886 Anthony Daniels::C-3PO::imdb:nm0000355 Kenny Baker::R2-D2::imdb:nm0048652 Terence Stamp::Supreme Chancellor Valorum::imdb:nm0000654 Brian Blessed::Boss Nass::imdb:nm0000306 Andrew Secombe::Watto::imdb:nm0781181 Lewis Macleod::Sebulba::imdb:nm0533914 Steve Speirs::Capt. Tarpals::imdb:nm0818648 Silas Carson::Viceroy Nute Gunray/Ki-Adi-Mundi/Lott Dodd/Radiant VII Pilot::imdb:nm0141324 Ralph Brown::Ric Olié::imdb:nm0114460 Celia Imrie::Fighter Pilot Bravo 5::imdb:nm0408309 Benedict Taylor::Fighter Pilot Bravo 2::imdb:nm0852028 Karol Cristina da Silva::Rabé::imdb:nm0196263 Clarence Smith::Fighter Pilot Bravo 3::imdb:nm0807734 Samuel L. Jackson::Mace Windu::imdb:nm0000168 Dominic West::Palace guard::imdb:nm0922035 Liz Wilson::Eirtaé (as Friday 'Liz' Wilson)::imdb:nm0933770 Candice Orwell::Yané::imdb:nm0651425 Sofia Coppola::Saché::imdb:nm0001068 Keira Knightley::Sabé::imdb:nm0461136 Bronagh Gallagher::Radiant VII captain::imdb:nm0302345 John Fensom::TC-14::imdb:nm0271993 Greg Proops::Beed (voice)::imdb:nm0698681 Scott Capurro::Fode::imdb:nm0135750 Margaret Towner::Jira::imdb:nm0870026 Dhruv Chanchani::Kitster::imdb:nm0151268 Oliver Walpole::Seek::imdb:nm0909488 Katie Lucas::Amee (as Jenna Green)::imdb:nm0337964 Megan Udall::Melee::imdb:nm0879818 Hassani Shapi::Eeth Koth::imdb:nm0788434 Gin Clarke::Adi Gallia (as Gin)::imdb:nm0164778 Khan Bonfils::Saesee Tiin::imdb:nm0094416 Michelle Taylor::Yarael Poof::imdb:nm1180158 Michaela Cottrell::Even Piell::imdb:nm0183169 Dipika O'Neill Joti::Depa Billaba::imdb:nm0642086 Phil Eason::Yaddle::imdb:nm0247500 Mark Coulier::Aks Moe::imdb:nm0183418 Lindsay Duncan::TC-14 (voice)::imdb:nm0242026 Peter Serafinowicz::Darth Maul (voice)::imdb:nm0784818 James Taylor::Rune Haako::imdb:nm0852511 Chris Sanders::Daultay Dofine::imdb:nm0761497 Toby Longworth::Sen. Lott Dodd/Gragra (voice)::imdb:nm0519528 Marc Silk::Aks Moe (voice)::imdb:nm0798025 Amanda Lucas::Tey How/Diva Funquita (voice) (as Tyger)::imdb:nm0878741 Amy Allen::Twi'Lek Senatorial Aide (DVD deleted scenes) (uncredited)::imdb:nm1116989 Don Bies::Pod race mechanic (uncredited)::imdb:nm0081636 Trisha Biggar::Orn Free Taa's aide (uncredited)::imdb:nm0081773 Jerome Blake::Rune Haako/Mas Amedda/Oppo Rancisis/Orn Free Taa (uncredited)::imdb:nm0086592 Ben Burtt::Naboo Courier (uncredited)::imdb:nm0123785 Doug Chiang::Flag bearer (uncredited)::imdb:nm0156956 Rob Coleman::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0171197 Roman Coppola::Senate guard (uncredited)::imdb:nm0178910 Russell Darling::Naboo Royal Security Guard (uncredited)::imdb:nm0201402 Warwick Davis::Wald/Pod race spectator/Mos Espa Citizen (uncredited)::imdb:nm0001116 C. Michael Easton::Pod race spectator (uncredited)::imdb:nm0247694 Joss Gower::Naboo fighter pilot (uncredited)::imdb:nm0332980 Raymond Griffiths::GONK Droid (uncredited)::imdb:nm0341739 Nathan Hamill::Pod race spectator/Naboo palace guard (uncredited)::imdb:nm0357686 Tim Harrington::Extra (Naboo Security Gaurd) (uncredited)::imdb:nm0364360 Jack Haye::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0370849 Nifa Hindes::Ann Gella (uncredited)::imdb:nm0385539 Nishan Hindes::Tann Gella (uncredited)::imdb:nm0385540 John Knoll::Lt. Rya Kirsch (Bravo 4)/Flag bearer (uncredited)::imdb:nm0461306 Kamay Lau::Sei Taria - Senators Aide (uncredited)::imdb:nm2151895 Dan Madsen::Kaadu handler (uncredited)::imdb:nm0535186 Iain McCaig::Orn Free Taa's aide (uncredited)::imdb:nm0564572 Rick McCallum::Naboo courier (uncredited)::imdb:nm0564768 Jeff Olson::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0647926 Lorne Peterson::Mos Espa citizen (uncredited)::imdb:nm0677285 Alan Ruscoe::Plo Koon/Bib Foruna/Daultay Dofine (uncredited)::imdb:nm0750603 Steve Sansweet::Naboo courier (uncredited)::imdb:nm0763109 Mike Savva::Naboo Royal Guard (uncredited)::imdb:nm1979766 Christian Simpson::Bravo 6 (uncredited)::imdb:nm0800939 Paul Martin Smith::Naboo courier (uncredited)::imdb:nm0809551 Scott Squires::Naboo speeder driver (uncredited)::imdb:nm0820140 Tom Sylla::Battle Droid (voice) (uncredited)::imdb:nm0843143 Bill Tlusty::Chokk, Jabba's Bodyguard (uncredited)::imdb:nm0864754 Danny Wagner::Mawhonic (uncredited)::imdb:nm0905855 Matthew Wood::Bib Fortuna/Voice of Ody Mandrell (uncredited)::imdb:nm0003214 [plot] => The evil Trade Federation, led by Nute Gunray (Carson) is planning to take over the peaceful world of Naboo. Jedi's Qui-Gon Jinn (Neeson) and Obi-Wan Kenobi (McGregor) are sent to confront the leaders. But not everything goes to plan. The two Jedis escape, and along with their new Gungan friend, Jar Jar Binks (Best) head to Naboo to warn Queen Amidala (Portman), but droids have already started to capture Naboo and the Queen is not safe there. Eventually they land on Tatooine, where they become friends with a young boy known as Anakin Skywalker (Lloyd). Qui-Gon is curious about the boy, and sees a bright future for him. The group must now find a way of getting to Coruscant and to finally solve this trade dispute, but there is someone else hiding in the shadows. Are the sith really extinct? Is the Queen who she really says she is? and what's so special about this young boy? All these questions and more in the first chapter of the epic Star Wars saga. )
     }
 
     function testMovie1a()
-        {
-            $cache = false;
-            $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+    {
+        $cache = false;
+        $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
 
-            // Star Wars: Episode I
-            // http://imdb.com/title/tt0120915/
-            $id = '0120915';
-            $data = engineGetData($id, 'imdb', $cache, $param);
-            $this->assertTrue(count(array_keys($data)) > 0);
+        // Star Wars: Episode I
+        // https://imdb.com/title/tt0120915/
 
-            echo '<pre>';
-            dump($data);
-            echo '</pre>';
+        $id = '0120915';
+        $data = engineGetData($id, 'imdb', $cache, $param);
+        $this->assertTrue(count($data) > 0);
 
-            $this->assertEqual($data['title'], 'Star Wars: Episode I');
-            $this->assertEqual($data['subtitle'], 'Die dunkle Bedrohung');
-            $this->assertEqual($data['origtitle'], 'Star Wars: Episode I - The Phantom Menace');
-            $this->assertEqual($data['mpaa'], '');
+        #echo '<pre>';
+        #dump($data);
+        #echo '</pre>';
 
-            $this->assertTrue($data['rating'] >= 6);
-            $this->assertTrue($data['rating'] <= 8);
-            $this->assertEqual($data['country'], 'Vereinigte Staaten');
-            $this->assertEqual($data['language'], 'englisch, sanskrit');
-            $this->assertEqual(join(',', $data['genres']), 'Action,Abenteuer,Fantasy,Science-Fiction');
+        $this->assertEqual($data['title'], 'Star Wars: Episode I');
+        $this->assertEqual($data['subtitle'], 'Die dunkle Bedrohung');
+        $this->assertEqual($data['origtitle'], 'Star Wars: Episode I - The Phantom Menace');
+        $this->assertEqual($data['mpaa'], '');
 
-            # cast tests changed to be independent of order
-            $cast = explode("\n", $data['cast']);
+        $this->assertTrue($data['rating'] >= 6);
+        $this->assertTrue($data['rating'] <= 8);
+        $this->assertEqual($data['country'], 'Vereinigte Staaten');
+        $this->assertEqual($data['language'], 'englisch, sanskrit');
+        $this->assertEqual(join(',', $data['genres']), 'Action,Abenteuer,Fantasy,Science-Fiction');
 
-            $this->assertTrue(in_array('Liam Neeson::Qui-Gon Jinn::imdb:nm0000553', $cast));
-            $this->assertTrue(in_array('Ewan McGregor::Obi-Wan Kenobi::imdb:nm0000191', $cast));
-            $this->assertTrue(in_array('Natalie Portman::Queen Amidala / Padmé::imdb:nm0000204', $cast));
-            $this->assertTrue(in_array('Anthony Daniels::C-3PO (voice)::imdb:nm0000355', $cast));
-            $this->assertTrue(in_array('Kenny Baker::R2-D2::imdb:nm0048652', $cast));
-            $this->assertTrue(count($cast) > 90);
-
-            $this->assertPattern('/Two Jedi escape a hostile blockade to find allies/', $data['plot']);
-
-
-    #   Array ( [title] => Star Wars: Episode I [subtitle] => The Phantom Menace [year] => 1999 [coverurl] => http://ia.imdb.com/media/imdb/01/I/47/66/60m.jpg [mpaa] => Rated PG for sci-fi action/violence. [bbfc] => U [runtime] => 133 [director] => George Lucas [rating] => 6.3 [country] => USA [language] => english [genres] => Array ( [0] => Action [1] => Adventure [2] => Fantasy [3] => Sci-Fi ) [cast] => Liam Neeson::Qui-Gon Jinn::imdb:nm0000553 Ewan McGregor::Obi-Wan Kenobi::imdb:nm0000191 Natalie Portman::Queen Padmé Amidala::imdb:nm0000204 Jake Lloyd::Anakin Skywalker::imdb:nm0005157 Pernilla August::Shmi Skywalker::imdb:nm0000278 Frank Oz::Yoda::imdb:nm0000568 Ian McDiarmid::Senator Palpatine::imdb:nm0001519 Oliver Ford Davies::Gov. Sio Bibble::imdb:nm0203882 Ray Park::Darth Maul::imdb:nm0661917 Hugh Quarshie::Capt. Panaka::imdb:nm0702934 Ahmed Best::Jar Jar Binks::imdb:nm0078886 Anthony Daniels::C-3PO::imdb:nm0000355 Kenny Baker::R2-D2::imdb:nm0048652 Terence Stamp::Supreme Chancellor Valorum::imdb:nm0000654 Brian Blessed::Boss Nass::imdb:nm0000306 Andrew Secombe::Watto::imdb:nm0781181 Lewis Macleod::Sebulba::imdb:nm0533914 Steve Speirs::Capt. Tarpals::imdb:nm0818648 Silas Carson::Viceroy Nute Gunray/Ki-Adi-Mundi/Lott Dodd/Radiant VII Pilot::imdb:nm0141324 Ralph Brown::Ric Olié::imdb:nm0114460 Celia Imrie::Fighter Pilot Bravo 5::imdb:nm0408309 Benedict Taylor::Fighter Pilot Bravo 2::imdb:nm0852028 Karol Cristina da Silva::Rabé::imdb:nm0196263 Clarence Smith::Fighter Pilot Bravo 3::imdb:nm0807734 Samuel L. Jackson::Mace Windu::imdb:nm0000168 Dominic West::Palace guard::imdb:nm0922035 Liz Wilson::Eirtaé (as Friday 'Liz' Wilson)::imdb:nm0933770 Candice Orwell::Yané::imdb:nm0651425 Sofia Coppola::Saché::imdb:nm0001068 Keira Knightley::Sabé::imdb:nm0461136 Bronagh Gallagher::Radiant VII captain::imdb:nm0302345 John Fensom::TC-14::imdb:nm0271993 Greg Proops::Beed (voice)::imdb:nm0698681 Scott Capurro::Fode::imdb:nm0135750 Margaret Towner::Jira::imdb:nm0870026 Dhruv Chanchani::Kitster::imdb:nm0151268 Oliver Walpole::Seek::imdb:nm0909488 Katie Lucas::Amee (as Jenna Green)::imdb:nm0337964 Megan Udall::Melee::imdb:nm0879818 Hassani Shapi::Eeth Koth::imdb:nm0788434 Gin Clarke::Adi Gallia (as Gin)::imdb:nm0164778 Khan Bonfils::Saesee Tiin::imdb:nm0094416 Michelle Taylor::Yarael Poof::imdb:nm1180158 Michaela Cottrell::Even Piell::imdb:nm0183169 Dipika O'Neill Joti::Depa Billaba::imdb:nm0642086 Phil Eason::Yaddle::imdb:nm0247500 Mark Coulier::Aks Moe::imdb:nm0183418 Lindsay Duncan::TC-14 (voice)::imdb:nm0242026 Peter Serafinowicz::Darth Maul (voice)::imdb:nm0784818 James Taylor::Rune Haako::imdb:nm0852511 Chris Sanders::Daultay Dofine::imdb:nm0761497 Toby Longworth::Sen. Lott Dodd/Gragra (voice)::imdb:nm0519528 Marc Silk::Aks Moe (voice)::imdb:nm0798025 Amanda Lucas::Tey How/Diva Funquita (voice) (as Tyger)::imdb:nm0878741 Amy Allen::Twi'Lek Senatorial Aide (DVD deleted scenes) (uncredited)::imdb:nm1116989 Don Bies::Pod race mechanic (uncredited)::imdb:nm0081636 Trisha Biggar::Orn Free Taa's aide (uncredited)::imdb:nm0081773 Jerome Blake::Rune Haako/Mas Amedda/Oppo Rancisis/Orn Free Taa (uncredited)::imdb:nm0086592 Ben Burtt::Naboo Courier (uncredited)::imdb:nm0123785 Doug Chiang::Flag bearer (uncredited)::imdb:nm0156956 Rob Coleman::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0171197 Roman Coppola::Senate guard (uncredited)::imdb:nm0178910 Russell Darling::Naboo Royal Security Guard (uncredited)::imdb:nm0201402 Warwick Davis::Wald/Pod race spectator/Mos Espa Citizen (uncredited)::imdb:nm0001116 C. Michael Easton::Pod race spectator (uncredited)::imdb:nm0247694 Joss Gower::Naboo fighter pilot (uncredited)::imdb:nm0332980 Raymond Griffiths::GONK Droid (uncredited)::imdb:nm0341739 Nathan Hamill::Pod race spectator/Naboo palace guard (uncredited)::imdb:nm0357686 Tim Harrington::Extra (Naboo Security Gaurd) (uncredited)::imdb:nm0364360 Jack Haye::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0370849 Nifa Hindes::Ann Gella (uncredited)::imdb:nm0385539 Nishan Hindes::Tann Gella (uncredited)::imdb:nm0385540 John Knoll::Lt. Rya Kirsch (Bravo 4)/Flag bearer (uncredited)::imdb:nm0461306 Kamay Lau::Sei Taria - Senators Aide (uncredited)::imdb:nm2151895 Dan Madsen::Kaadu handler (uncredited)::imdb:nm0535186 Iain McCaig::Orn Free Taa's aide (uncredited)::imdb:nm0564572 Rick McCallum::Naboo courier (uncredited)::imdb:nm0564768 Jeff Olson::Pod race spectator in Jabba's Private Box (uncredited)::imdb:nm0647926 Lorne Peterson::Mos Espa citizen (uncredited)::imdb:nm0677285 Alan Ruscoe::Plo Koon/Bib Foruna/Daultay Dofine (uncredited)::imdb:nm0750603 Steve Sansweet::Naboo courier (uncredited)::imdb:nm0763109 Mike Savva::Naboo Royal Guard (uncredited)::imdb:nm1979766 Christian Simpson::Bravo 6 (uncredited)::imdb:nm0800939 Paul Martin Smith::Naboo courier (uncredited)::imdb:nm0809551 Scott Squires::Naboo speeder driver (uncredited)::imdb:nm0820140 Tom Sylla::Battle Droid (voice) (uncredited)::imdb:nm0843143 Bill Tlusty::Chokk, Jabba's Bodyguard (uncredited)::imdb:nm0864754 Danny Wagner::Mawhonic (uncredited)::imdb:nm0905855 Matthew Wood::Bib Fortuna/Voice of Ody Mandrell (uncredited)::imdb:nm0003214 [plot] => The evil Trade Federation, led by Nute Gunray (Carson) is planning to take over the peaceful world of Naboo. Jedi's Qui-Gon Jinn (Neeson) and Obi-Wan Kenobi (McGregor) are sent to confront the leaders. But not everything goes to plan. The two Jedis escape, and along with their new Gungan friend, Jar Jar Binks (Best) head to Naboo to warn Queen Amidala (Portman), but droids have already started to capture Naboo and the Queen is not safe there. Eventually they land on Tatooine, where they become friends with a young boy known as Anakin Skywalker (Lloyd). Qui-Gon is curious about the boy, and sees a bright future for him. The group must now find a way of getting to Coruscant and to finally solve this trade dispute, but there is someone else hiding in the shadows. Are the sith really extinct? Is the Queen who she really says she is? and what's so special about this young boy? All these questions and more in the first chapter of the epic Star Wars saga. )
-        }
+        $this->assertPattern('/Two Jedi escape a hostile blockade to find allies/', $data['plot']);
+    }
 
     function testMovie2()
     {
         // Harold & Kumar Escape from Guantanamo Bay
-        // http://www.imdb.com/title/tt0481536/
+        // https://www.imdb.com/title/tt0481536/
 
         $id = '0481536';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
 #       dump($data);
 
@@ -151,7 +136,7 @@ class TestIMDB extends UnitTestCase
     function testMovie4()
     {
     	// Astérix aux jeux olympiques (2008)
-    	// http://www.imdb.com/title/tt0463872/
+    	// https://www.imdb.com/title/tt0463872/
 
     	$id = '0463872';
     	$data = engineGetData($id, 'imdb');
@@ -162,7 +147,7 @@ class TestIMDB extends UnitTestCase
 
     function testMovie5() {
     	// Role Models
-    	// http://www.imdb.com/title/tt0430922/
+    	// https://www.imdb.com/title/tt0430922/
     	// added for bug #3114003 - imdb.php does not fetch runtime in certain cases
 
     	$id = '0430922';
@@ -177,7 +162,7 @@ class TestIMDB extends UnitTestCase
         
     function testMovie6() {
     	// She's Out of My League
-    	// http://www.imdb.com/title/tt0815236/
+    	// https://www.imdb.com/title/tt0815236/
     	// added for bug #3114003 - imdb.php does not fetch runtime in certain cases
 
     	$id = '0815236';
@@ -189,7 +174,7 @@ class TestIMDB extends UnitTestCase
 
     function testMovie7() {
     	// Romasanta
-    	// http://www.imdb.com/title/tt0374180/
+    	// https://www.imdb.com/title/tt0374180/
     	// added for bug #2914077 - charset of plot
 
     	$id = '0374180';
@@ -200,7 +185,7 @@ class TestIMDB extends UnitTestCase
 
     function testMovie8() {
         // Cars (2006)
-        // http://www.imdb.com/title/tt0317219/
+        // https://www.imdb.com/title/tt0317219/
         // added for bug #3399788 - title & year
 
         $cache = false;
@@ -221,11 +206,11 @@ class TestIMDB extends UnitTestCase
     function testSeries()
     {
         // Scrubs
-        // http://imdb.com/title/tt0285403/
+        // https://imdb.com/title/tt0285403/
 
         $id = '0285403';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -239,11 +224,11 @@ class TestIMDB extends UnitTestCase
     function testSeries2()
     {
         // 24
-        // http://imdb.com/title/tt0285331/
+        // https://imdb.com/title/tt0285331/
 
         $id = '0285331';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -256,10 +241,10 @@ class TestIMDB extends UnitTestCase
     function testSeries3()
     {
         // Bis in die Spitzen
-        // http://imdb.com/title/tt0461620/
+        // https://imdb.com/title/tt0461620/
         $id = '0461620';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -274,7 +259,7 @@ class TestIMDB extends UnitTestCase
 
         $id = '0708758';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -314,7 +299,7 @@ class TestIMDB extends UnitTestCase
         
         $id = '0359476';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -346,7 +331,7 @@ class TestIMDB extends UnitTestCase
 
     function testSeriesEpisode3() {
         //Pushing Daisies - Episode 3
-        // http://www.imdb.com/title/tt1039379/
+        // https://www.imdb.com/title/tt1039379/
 
         $id = '1039379';
         $data = engineGetData($id, 'imdb');
@@ -369,7 +354,7 @@ class TestIMDB extends UnitTestCase
 
     function testActorWithoutImage() {
         // Denzel Quirke
-        // http://www.imdb.com/name/nm10308550/
+        // https://www.imdb.com/name/nm10308550/
 
         $data = imdbActor('Lena Banks', 'nm10308550');
 
@@ -382,10 +367,10 @@ class TestIMDB extends UnitTestCase
     function testSearch()
     {
         // Clerks 2
-        // http://imdb.com/find?s=all&q=clerks
+        // https://imdb.com/find?s=all&q=clerks
         
         $data = engineSearch('Clerks 2', 'imdb');
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         $data = $data[0];
 
@@ -406,7 +391,7 @@ class TestIMDB extends UnitTestCase
         $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
 
         $data = engineSearch('Das Streben nach Glück', 'imdb', $aka, $cache, $param);
-        $this->assertTrue(count(array_keys($data)) > 0);
+        $this->assertTrue(count($data) > 0);
 
         $data = $data[0];
 #       dump($data);
@@ -421,7 +406,7 @@ class TestIMDB extends UnitTestCase
     function testPartialSearch()
     {
         // Serpico
-        // http://imdb.com/find?s=all&q=serpico
+        // https://imdb.com/find?s=all&q=serpico
         
         $data = engineSearch('Serpico', 'imdb');
 		#echo("<pre>");dump($data);echo("</pre>");
