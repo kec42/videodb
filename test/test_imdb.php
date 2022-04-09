@@ -14,8 +14,6 @@ require_once './engines/engines.php';
 
 class TestIMDB extends UnitTestCase
 {
-    $cache = false;
-
     function TestIMDB()
     {
         parent::__construct();
@@ -23,10 +21,12 @@ class TestIMDB extends UnitTestCase
 
     function testMovie()
     {
-        #$para = ['header' => ['Accept-Language' => 'fr-FR;q=1.0']];
-        #$para = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
-        #$para = ['header' => ['Accept-Language' => 'da-DK;q=1.0']];
-        $para = ['header' => ['Accept-Language' => 'en-US;q=1.0']];
+        $cache = false;
+
+        # $param = ['header' => ['Accept-Language' => 'fr-FR;q=1.0']];
+        # $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+        # $param = ['header' => ['Accept-Language' => 'da-DK;q=1.0']];
+        $param = ['header' => ['Accept-Language' => 'en-US;q=1.0']];
 
         // Star Wars: Episode I
         // http://imdb.com/title/tt0120915/
@@ -42,16 +42,14 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['title'], 'Star Wars: Episode I');
 
         # English/Deutsch/Dansk
-        $this->assertPattern('#The Phantom Menace|Die dunkle Bedrohung|Den usynlige fjende#', $data['subtitle']);
+        $this->assertEqual($data['subtitle'], 'The Phantom Menace');
 
         # new test: origtitle
-        # English/Others
-        $this->assertPattern('#|Star Wars: Episode I - The Phantom Menace#', $data['origtitle']);
+        $this->assertEqual($data['origtitle'], '');
 
         $this->assertEqual($data['year'], 1999);
-        $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
+        $this->assertPattern($data['coverurl'], '#https://m.media-amazon.com/images/.*.jpg#');
 
-        #English/Danish
         $this->assertEqual($data['mpaa'], 'Rated PG for sci-fi action/violence');
 
         # bbfc no longer appears on main page
