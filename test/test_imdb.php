@@ -343,7 +343,7 @@ class TestIMDB extends UnitTestCase
         // http://imdb.com/find?s=all&q=clerks
         
         $data = engineSearch('Clerks 2', 'imdb');
-        $this->assertTrue(count($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         $data = $data[0];
 
@@ -364,7 +364,7 @@ class TestIMDB extends UnitTestCase
         $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
 
         $data = engineSearch('Das Streben nach Glück', 'imdb', $aka, $cache, $param);
-        $this->assertTrue(count($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         $data = $data[0];
 #       dump($data);
