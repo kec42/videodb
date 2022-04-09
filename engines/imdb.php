@@ -144,7 +144,7 @@ function getRecommendationData($imdbID) {
  * @param   boolean aka     Use AKA search for foreign language titles
  * @return  array           Associative array with id and title
  */
-function imdbSearch($title, $aka=null, $param)
+function imdbSearch($title, $aka=null, $param=null)
 {
     global $imdbServer;
     global $imdbIdPrefix;
