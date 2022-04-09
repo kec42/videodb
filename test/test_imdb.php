@@ -32,7 +32,7 @@ class TestIMDB extends UnitTestCase
         // http://imdb.com/title/tt0120915/
         $id = '0120915';
         $data = engineGetData($id, 'imdb', $cache, $param);
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         echo '<pre>';
         dump($data);
@@ -66,12 +66,12 @@ class TestIMDB extends UnitTestCase
         # cast tests changed to be independent of order
         $cast = explode("\n", $data['cast']);
 
-        $this->assertTrue( in_array('Liam Neeson::Qui-Gon Jinn::imdb:nm0000553', $cast) );
-        $this->assertTrue( in_array('Ewan McGregor::Obi-Wan Kenobi::imdb:nm0000191', $cast) );
-        $this->assertTrue( in_array('Natalie Portman::Queen Amidala / Padmé::imdb:nm0000204', $cast) );
-        $this->assertTrue( in_array('Anthony Daniels::C-3PO (voice)::imdb:nm0000355', $cast) );
-        $this->assertTrue( in_array('Kenny Baker::R2-D2::imdb:nm0048652', $cast) );
-        $this->assertTrue( sizeof($cast) > 90 );
+        $this->assertTrue(in_array('Liam Neeson::Qui-Gon Jinn::imdb:nm0000553', $cast));
+        $this->assertTrue(in_array('Ewan McGregor::Obi-Wan Kenobi::imdb:nm0000191', $cast));
+        $this->assertTrue(in_array('Natalie Portman::Queen Amidala / Padmé::imdb:nm0000204', $cast));
+        $this->assertTrue(in_array('Anthony Daniels::C-3PO (voice)::imdb:nm0000355', $cast));
+        $this->assertTrue(in_array('Kenny Baker::R2-D2::imdb:nm0048652', $cast));
+        $this->assertTrue(count($cast) > 90);
 
         $this->assertPattern('/Two Jedi escape a hostile blockade to find allies/', $data['plot']);
 
@@ -86,7 +86,7 @@ class TestIMDB extends UnitTestCase
 
         $id = '0481536';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
 #       dump($data);
 
@@ -183,7 +183,7 @@ class TestIMDB extends UnitTestCase
 
         $id = '0285403';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -201,7 +201,7 @@ class TestIMDB extends UnitTestCase
 
         $id = '0285331';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -217,7 +217,7 @@ class TestIMDB extends UnitTestCase
         // http://imdb.com/title/tt0461620/
         $id = '0461620';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -232,7 +232,7 @@ class TestIMDB extends UnitTestCase
 
         $id = '0708758';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -256,8 +256,8 @@ class TestIMDB extends UnitTestCase
         $this->assertTrue(in_array('Marina Sirtis::Counselor Deanna Troi::imdb:nm0000642', $cast));
         $this->assertTrue(in_array('John de Lancie::Q (as John deLancie)::imdb:nm0209496', $cast));
         $this->assertTrue(in_array('Rob Bowman::Borg (voice) (uncredited)::imdb:nm0101385', $cast));
-        $this->assertTrue(sizeof($cast) > 15);
-        $this->assertTrue(sizeof($cast) < 30);
+        $this->assertTrue(count($cast) > 15);
+        $this->assertTrue(count($cast) < 30);
 
         $this->assertTrue($data['runtime'] >= 40);
         $this->assertTrue($data['runtime'] <= 50);
@@ -272,7 +272,7 @@ class TestIMDB extends UnitTestCase
         
         $id = '0359476';
         $data = engineGetData($id, 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count(array_keys($data)) > 0);
 
         #echo '<pre>';dump($data);echo '</pre>';
 
@@ -296,8 +296,8 @@ class TestIMDB extends UnitTestCase
         $this->assertTrue(in_array('Nathaniel Parker::Thomas Lynley::imdb:nm0662511', $cast));
         $this->assertTrue(in_array('Andrew Clover::Hugh Patten::imdb:nm0167249', $cast));
         $this->assertTrue(in_array('Anjalee Patel::Hadiyyah::imdb:nm1347125', $cast));
-        $this->assertTrue(sizeof($cast) > 12);
-        $this->assertTrue(sizeof($cast) < 30);
+        $this->assertTrue(count($cast) > 12);
+        $this->assertTrue(count($cast) < 30);
 
         $this->assertEqual($data['plot'], 'Lynley seeks the help of profiler Helen Clyde when he investigates the asphyxiation death of superstar cricketer with a dysfunctional personal life.');
     }
@@ -343,7 +343,7 @@ class TestIMDB extends UnitTestCase
         // http://imdb.com/find?s=all&q=clerks
         
         $data = engineSearch('Clerks 2', 'imdb');
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count($data) > 0);
 
         $data = $data[0];
 
@@ -356,15 +356,15 @@ class TestIMDB extends UnitTestCase
      */
     function testSearch2()
     {
-        $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
-        $cache = false;
-        $aka = true;
-
         // Das Streben nach Glück
-        // http://www.imdb.com/find?s=all&q=Das+Streben+nach+Gl%FCck
-        
+        // https://www.imdb.com/find?s=all&q=Das+Streben+nach+Gl%FCck
+
+        $aka = true;
+        $cache = false;
+        $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+
         $data = engineSearch('Das Streben nach Glück', 'imdb', $aka, $cache, $param);
-        $this->assertTrue(sizeof($data) > 0);
+        $this->assertTrue(count($data) > 0);
 
         $data = $data[0];
 #       dump($data);
