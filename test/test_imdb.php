@@ -228,7 +228,7 @@ class TestIMDB extends UnitTestCase
     function testSeriesEpisode()
     {
         // Star Trek TNG Episode "Q Who?"
-        // http://www.imdb.com/title/tt0708758/
+        // https://www.imdb.com/title/tt0708758/
 
         $id = '0708758';
         $data = engineGetData($id, 'imdb');
@@ -239,30 +239,30 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['istv'], 1);
         $this->assertEqual($data['tvseries_id'], '0092455');
         $this->assertPattern('/Star Trek: The Next Generation|Raumschiff Enterprise - Das nächste Jahrhundert/', $data['title']);
-        $this->assertEqual($data['subtitle'], 'Q Who?');
-        $this->assertPattern('/19\d\d/', $data['year']);
+        $this->assertEqual($data['subtitle'], 'Q Who');
+        $this->assertEquals($data['year'], '1998');
         $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['director'], 'Rob Bowman');
         $this->assertTrue($data['rating'] >= 7);
         $this->assertTrue($data['rating'] <= 9);
-        $this->assertEqual($data['country'], 'USA');
+        $this->assertEqual($data['country'], 'United States');
         $this->assertEqual($data['language'], 'english');
         $this->assertEqual(join(',', $data['genres']), 'Action,Adventure,Sci-Fi');
 
         $cast = explode("\n", $data['cast']);
 
-        $this->assertTrue( in_array('Patrick Stewart::Captain Jean-Luc Picard::imdb:nm0001772', $cast) );
-        $this->assertTrue( in_array('Jonathan Frakes::Commander William T. Riker::imdb:nm0000408', $cast) );
-        $this->assertTrue( in_array('Marina Sirtis::Counselor Deanna Troi::imdb:nm0000642', $cast) );
-        $this->assertTrue( in_array('John de Lancie::Q (as John deLancie)::imdb:nm0209496', $cast) );
-        $this->assertTrue( in_array('Rob Bowman::Borg (voice) (uncredited)::imdb:nm0101385', $cast) );
-        $this->assertTrue( sizeof($cast) > 15 );
-        $this->assertTrue( sizeof($cast) < 30 );
+        $this->assertTrue(in_array('Patrick Stewart::Capt. Jean-Luc Picard::imdb:nm0001772', $cast));
+        $this->assertTrue(in_array('Jonathan Frakes::Cmdr. William Riker::imdb:nm0000408', $cast));
+        $this->assertTrue(in_array('Marina Sirtis::Counselor Deanna Troi::imdb:nm0000642', $cast));
+        $this->assertTrue(in_array('John de Lancie::Q (as John deLancie)::imdb:nm0209496', $cast));
+        $this->assertTrue(in_array('Rob Bowman::Borg (voice) (uncredited)::imdb:nm0101385', $cast));
+        $this->assertTrue(sizeof($cast) > 15);
+        $this->assertTrue(sizeof($cast) < 30);
 
         $this->assertTrue($data['runtime'] >= 40);
         $this->assertTrue($data['runtime'] <= 50);
 
-        $this->assertPattern('/Q pays the Enterprise another visit/', $data['plot']);
+        $this->assertPattern('/Q tries to prove that Picard/', $data['plot']);
     }
 
     function testSeriesEpisode2()
