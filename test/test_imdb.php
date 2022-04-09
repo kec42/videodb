@@ -187,8 +187,8 @@ class TestIMDB extends UnitTestCase
 
         #echo '<pre>';dump($data);echo '</pre>';
 
-        $this->assertPattern("/Zach Braff::Dr. John 'J.D.' Dorian \(.+?\)::imdb:nm0103785.+Mona Weiss::Nurse \(.+?\)::imdb:nm2032293/is", $data['cast']);
-        $this->assertPattern('/Sacred Heart/i', $data['plot']);
+        $this->assertPattern("/Zach Braff::Dr. John 'J.D.' Dorian .+?::imdb:nm0103785.+Mona Weiss::Nurse .+?::imdb:nm2032293/s", $data['cast']);
+        $this->assertPattern('/Sacred Heart Hospital/', $data['plot']);
     }
 
     /**
