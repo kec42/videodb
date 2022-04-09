@@ -14,6 +14,8 @@ require_once './engines/engines.php';
 
 class TestIMDB extends UnitTestCase
 {
+    $cache = false;
+
     function TestIMDB()
     {
         parent::__construct();
@@ -21,10 +23,15 @@ class TestIMDB extends UnitTestCase
 
     function testMovie()
     {
+        #$para = ['header' => ['Accept-Language' => 'fr-FR;q=1.0']];
+        #$para = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+        #$para = ['header' => ['Accept-Language' => 'da-DK;q=1.0']];
+        $para = ['header' => ['Accept-Language' => 'en-US;q=1.0']];
+
         // Star Wars: Episode I
         // http://imdb.com/title/tt0120915/
         $id = '0120915';
-        $data = engineGetData($id, 'imdb');
+        $data = engineGetData($id, 'imdb', $cache, $param);
         $this->assertTrue(sizeof($data) > 0);
 
         echo '<pre>';
@@ -43,7 +50,10 @@ class TestIMDB extends UnitTestCase
 
         $this->assertEqual($data['year'], 1999);
         $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
+
+        #English/Danish
         $this->assertEqual($data['mpaa'], 'Rated PG for sci-fi action/violence');
+
         # bbfc no longer appears on main page
         # test disabled
         # $this->assertEqual($data[bbfc], 'U');

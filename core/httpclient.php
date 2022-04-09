@@ -97,9 +97,8 @@ function get_response_encoding($response)
  * @param  integer $timeout  Timeout in seconds defaults to 15
  * @return mixed             HTTP response
  */
-function httpClient($url, $cache = false, $para = null, $reload = false)
+function httpClient($url, $cache = true, $para = null, $reload = false)
 {
-    global $config;
     $client = new GuzzleHttp\Client();
 
     $requestConfig = [];
@@ -122,7 +121,7 @@ function httpClient($url, $cache = false, $para = null, $reload = false)
     }
 
     // get data from cache?
-    if ($cache &! $reload)
+    if ($cache && !$reload)
     {
         $resp = getHTTPcache($url.$post);
         if ($resp !== false)

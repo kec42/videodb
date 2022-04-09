@@ -204,22 +204,24 @@ function imdbSearch($title, $aka=null)
  * @author  Tiago Fonseca <t_r_fonseca@yahoo.co.uk>
  * @author  Victor La <cyridian@users.sourceforge.net>
  * @author  Roland Obermayer <robelix@gmail.com>
- * @param   int   IMDB-ID
+ * @param   int      IMDB-ID
+ * @param   boolean  use cache
+ * @param   array    parameters for httpClient
+ * @param   boolean  reload in httpClient
  * @return  array Result data
  */
-function imdbData($imdbID)
+function imdbData($imdbID, $cache, $param, $reload)
 {
     global $imdbServer;
     global $imdbIdPrefix;
     global $CLIENTERROR;
-    global $cache;
 
     $imdbID = preg_replace('/^'.$imdbIdPrefix.'/', '', $imdbID);
     $data= array(); // result
     $ary = array(); // temp
 
     // fetch mainpage
-    $resp = httpClient($imdbServer.'/title/tt'.$imdbID.'/', $cache);     // added trailing / to avoid redirect
+    $resp = httpClient($imdbServer.'/title/tt'.$imdbID.'/', $cache, $param, $reload); // added trailing / to avoid redirect
     if (!$resp['success']) $CLIENTERROR .= $resp['error']."\n";
 
     // add encoding
@@ -313,7 +315,7 @@ function imdbData($imdbID)
 
     // for Episodes - try to get some missing stuff from the main series page
     if ( $data['istv'] and (!$data['runtime'] or !$data['country'] or !$data['language'] or !$data['coverurl'])) {
-        $sresp = httpClient($imdbServer.'/title/tt'.$data['tvseries_id'].'/', $cache);
+        $sresp = httpClient($imdbServer.'/title/tt'.$data['tvseries_id'].'/', $cache, $param, $reload);
         if (!$sresp['success']) $CLIENTERROR .= $resp['error']."\n";
 
         # runtime
@@ -350,7 +352,7 @@ function imdbData($imdbID)
     $data['plot'] = $ary[1];
 
     // Fetch credits
-    $resp = imdbFixEncoding($data, httpClient($imdbServer.'/title/tt'.$imdbID.'/fullcredits', $cache));
+    $resp = imdbFixEncoding($data, httpClient($imdbServer.'/title/tt'.$imdbID.'/fullcredits', $cache, $param, $reload));
     if (!$resp['success']) $CLIENTERROR .= $resp['error']."\n";
 
     // Cast
@@ -379,7 +381,7 @@ function imdbData($imdbID)
     }
 
     // Fetch plot
-    $resp = $resp = imdbFixEncoding($data, httpClient($imdbServer.'/title/tt'.$imdbID.'/plotsummary', $cache));
+    $resp = $resp = imdbFixEncoding($data, httpClient($imdbServer.'/title/tt'.$imdbID.'/plotsummary', $cache, $param, $reload));
     if (!$resp['success']) $CLIENTERROR .= $resp['error']."\n";
 
     // Plot

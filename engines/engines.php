@@ -73,11 +73,13 @@ function engineGetEngine($id)
  * @author  Andreas Goetz <cpuidle@gmx.de>
  * @param   string    item id
  * @param   string    engine name
+ * @param   array     parameters used in httpclient
+ * @param   boolean   reload feature in httpclient
  * @return  array     item data
  */
-function engineGetData($id, $engine = 'imdb')
+function engineGetData($id, $engine = 'imdb', $cache = true, $param = null, $reload = false)
 {
-	global $lang, $cache;
+	global $lang;
 
 	require_once($engine.'.php');
 	$func = $engine.'Data';
@@ -85,8 +87,7 @@ function engineGetData($id, $engine = 'imdb')
     $result = array();
     if (function_exists($func))
     {
-        $cache  = true;
-        $result = $func($id);
+        $result = $func($id, $cache, $param, $reload);
     }
 
     // make sure all engines properly return the encoding type
