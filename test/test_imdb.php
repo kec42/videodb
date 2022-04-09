@@ -90,9 +90,9 @@ class TestIMDB extends UnitTestCase
             $data = engineGetData($id, 'imdb', $cache, $param);
             $this->assertTrue(count(array_keys($data)) > 0);
 
-            #echo '<pre>';
-            #dump($data);
-            #echo '</pre>';
+            echo '<pre>';
+            dump($data);
+            echo '</pre>';
 
             $this->assertEqual($data['title'], 'Star Wars: Episode I');
             $this->assertEqual($data['subtitle'], 'Die dunkle Bedrohung');
@@ -101,9 +101,9 @@ class TestIMDB extends UnitTestCase
 
             $this->assertTrue($data['rating'] >= 6);
             $this->assertTrue($data['rating'] <= 8);
-            $this->assertEqual($data['country'], 'United States');
-            $this->assertEqual($data['language'], 'english, sanskrit');
-            $this->assertEqual(join(',', $data['genres']), 'Action,Adventure,Fantasy,Sci-Fi');
+            $this->assertEqual($data['country'], 'Vereinigte Staaten');
+            $this->assertEqual($data['language'], 'englisch, sanskrit');
+            $this->assertEqual(join(',', $data['genres']), 'Action,Abenteuer,Fantasy,Science-Fiction');
 
             # cast tests changed to be independent of order
             $cast = explode("\n", $data['cast']);
