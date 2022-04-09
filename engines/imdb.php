@@ -142,14 +142,15 @@ function getRecommendationData($imdbID) {
  * @author  Charles Morgan <cmorgan34@yahoo.com>
  * @param   string  title   The search string
  * @param   boolean aka     Use AKA search for foreign language titles
+ * @param   boolean cache   Use cache or not, default to true
+ * @param   boolean param   Parameters for httpClient
  * @return  array           Associative array with id and title
  */
-function imdbSearch($title, $aka=null, $param=null)
+function imdbSearch($title, $aka = null, $cache = true, $param = null)
 {
     global $imdbServer;
     global $imdbIdPrefix;
     global $CLIENTERROR;
-    $cache = true;
 
     $url    = $imdbServer.'/find?q='.urlencode($title);
     if ($aka) $url .= ';s=tt;site=aka';

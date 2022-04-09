@@ -116,9 +116,9 @@ function engineGetData($id, $engine = 'imdb', $cache = true, $param = null, $rel
  * @param   string    engine name
  * @return  array     list of item data
  */
-function engineSearch($find, $engine = 'imdb', $para1 = null, $para2 = null)
+function engineSearch($find, $engine = 'imdb', $para1 = null, $para2 = null, $para3 = null)
 {
-    global $lang, $cache;
+    global $lang;
 
     require_once($engine.'.php');
     $func = $engine.'Search';
@@ -126,9 +126,8 @@ function engineSearch($find, $engine = 'imdb', $para1 = null, $para2 = null)
     $result = array();
     if (function_exists($func))
     {
-        $cache  = true;
         // check if additional parameters given to avoid overriding default values
-        $result = (isset($para1)) ? $func($find, $para1, $para2) : $func($find);
+        $result = (isset($para1)) ? $func($find, $para1, $para2, $param3) : $func($find);
     }
 
     // make sure all engines properly return the encoding type

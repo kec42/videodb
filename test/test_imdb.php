@@ -357,11 +357,13 @@ class TestIMDB extends UnitTestCase
     function testSearch2()
     {
         $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+        $cache = false;
+        $aka = true;
 
         // Das Streben nach Glück
         // http://www.imdb.com/find?s=all&q=Das+Streben+nach+Gl%FCck
         
-        $data = engineSearch('Das Streben nach Glück', 'imdb', true, $param);
+        $data = engineSearch('Das Streben nach Glück', 'imdb', $aka, $cache, $param);
         $this->assertTrue(sizeof($data) > 0);
 
         $data = $data[0];
