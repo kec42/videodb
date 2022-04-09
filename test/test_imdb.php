@@ -97,9 +97,9 @@ class TestIMDB extends UnitTestCase
     function testMovie3()
     {
     	// Living Dead Presents: Fog City
-    	// http://www.imdb.com/title/tt5105136/
+    	// https://www.imdb.com/title/tt5105136/
 
-    	$id = 'tt5105136';
+    	$id = '5105136';
     	$data = engineGetData($id, 'imdb');
 
     	// There is no cover image in imdb
