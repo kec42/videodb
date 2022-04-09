@@ -271,7 +271,7 @@ function imdbData($imdbID, $cache, $param, $reload)
     }
 
     # orig. title
-    preg_match('/<div data-testid="hero-title-block__original-title" class="sc-.+?">Original title: (.+?)<\/div>/si', $resp['data'], $ary);
+    preg_match('/<div data-testid="hero-title-block__original-title" class="sc-.+?">.+?: (.+?)<\/div>/si', $resp['data'], $ary);
     $data['origtitle'] = trim($ary[1]);
 
     // Cover URL
