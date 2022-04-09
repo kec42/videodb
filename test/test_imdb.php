@@ -48,7 +48,7 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['origtitle'], '');
 
         $this->assertEqual($data['year'], 1999);
-        $this->assertPattern('#https://m.media-amazon.com/images/M/*.jpg#'$data['coverurl']);
+        $this->assertPattern('#https://m.media-amazon.com/images/M/*.jpg#', $data['coverurl']);
 
         $this->assertEqual($data['mpaa'], 'Rated PG for sci-fi action/violence');
 
