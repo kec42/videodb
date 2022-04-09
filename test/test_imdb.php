@@ -240,7 +240,7 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['tvseries_id'], '0092455');
         $this->assertPattern('/Star Trek: The Next Generation|Raumschiff Enterprise - Das nächste Jahrhundert/', $data['title']);
         $this->assertEqual($data['subtitle'], 'Q Who');
-        $this->assertEqual($data['year'], '1998');
+        $this->assertEqual($data['year'], '1989');
         $this->assertPattern('#https://m.media-amazon.com/images/.*.jpg#', $data['coverurl']);
         $this->assertEqual($data['director'], 'Rob Bowman');
         $this->assertTrue($data['rating'] >= 7);
@@ -268,7 +268,7 @@ class TestIMDB extends UnitTestCase
     function testSeriesEpisode2()
     {
         // The Inspector Lynley Mysteries - Episode: Playing for the Ashes
-        // http://www.imdb.com/title/tt0359476
+        // https://www.imdb.com/title/tt0359476
         
         $id = '0359476';
         $data = engineGetData($id, 'imdb');
@@ -285,21 +285,21 @@ class TestIMDB extends UnitTestCase
         $this->assertEqual($data['director'], 'Richard Spence');
         $this->assertTrue($data['rating'] >= 5);
         $this->assertTrue($data['rating'] <= 8);
-        $this->assertEqual($data['country'], 'UK');
+        $this->assertEqual($data['country'], 'United Kingdom');
         $this->assertEqual($data['language'], 'english');
-        $this->assertEqual(join(',', $data['genres']), 'Crime,Drama,Mystery');
+        $this->assertEqual(join(',', $data['genres']), 'Crime,Drama,Mystery,Romance');
 
         $cast = explode("\n", $data['cast']);
 
-        $this->assertTrue( in_array('Clare Swinburne::Gabriella Patten::imdb:nm0842673', $cast) );
-        $this->assertTrue( in_array('Mark Brighton::Kenneth Waring::imdb:nm1347940', $cast) );
-        $this->assertTrue( in_array('Nathaniel Parker::Thomas Lynley::imdb:nm0662511', $cast) );
-        $this->assertTrue( in_array('Andrew Clover::Hugh Patten::imdb:nm0167249', $cast) );
-        $this->assertTrue( in_array('Anjalee Patel::Hadiyyah::imdb:nm1347125', $cast) );
-        $this->assertTrue( sizeof($cast) > 12 );
-        $this->assertTrue( sizeof($cast) < 30 );
+        $this->assertTrue(in_array('Clare Swinburne::Gabriella Patten::imdb:nm0842673', $cast));
+        $this->assertTrue(in_array('Mark Anthony Brighton::Kenneth Waring (as Mark Brighton)::imdb:nm1347940', $cast));
+        $this->assertTrue(in_array('Nathaniel Parker::Thomas Lynley::imdb:nm0662511', $cast));
+        $this->assertTrue(in_array('Andrew Clover::Hugh Patten::imdb:nm0167249', $cast));
+        $this->assertTrue(in_array('Anjalee Patel::Hadiyyah::imdb:nm1347125', $cast));
+        $this->assertTrue(sizeof($cast) > 12);
+        $this->assertTrue(sizeof($cast) < 30);
 
-        $this->assertPattern('/When England cricketer Kenneth Waring dies/', $data['plot']);
+        $this->assertEqual($data['plot'], 'Lynley seeks the help of profiler Helen Clyde when he investigates the asphyxiation death of superstar cricketer with a dysfunctional personal life.');
     }
 
     function testSeriesEpisode3() {
@@ -318,18 +318,18 @@ class TestIMDB extends UnitTestCase
     }
 
     function testActorImage() {
-        //William Shatner
-        // http://www.imdb.com/name/nm0000638/
+        // William Shatner
+        // https://www.imdb.com/name/nm0000638/
         $data = imdbActor('William Shatner', 'nm0000638');
 
-        $this->assertPattern('#http://ia.*imdb.com/.*.jpg#', $data[0][1]);
+        $this->assertPattern('#https://m.media-amazon.com/images/M/.+.jpg#', $data[0][1]);
     }
 
     function testActorWithoutImage() {
-        // Lena Banks
-        // http://www.imdb.com/name/nm3086341/
+        // Denzel Quirke
+        // http://www.imdb.com/name/nm10308550/
 
-        $data = imdbActor('Lena Banks', 'nm3086341');
+        $data = imdbActor('Lena Banks', 'nm10308550');
 
         $this->assertEqual('', $data[0][1]);
     }
@@ -356,17 +356,19 @@ class TestIMDB extends UnitTestCase
      */
     function testSearch2()
     {
+        $param = ['header' => ['Accept-Language' => 'de-DE;q=1.0']];
+
         // Das Streben nach Glück
         // http://www.imdb.com/find?s=all&q=Das+Streben+nach+Gl%FCck
         
-        $data = engineSearch('Das Streben nach Glück', 'imdb', true);
+        $data = engineSearch('Das Streben nach Glück', 'imdb', true, $param);
         $this->assertTrue(sizeof($data) > 0);
 
         $data = $data[0];
 #       dump($data);
 
         $this->assertEqual($data['id'], 'imdb:0454921');
-        $this->assertPattern('/The Pursuit of Happyness|Das Streben nach Glück/', $data['title']);
+        $this->assertEqual($data['title', 'Das Streben nach Glück');
     }
 
     /**

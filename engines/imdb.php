@@ -144,17 +144,17 @@ function getRecommendationData($imdbID) {
  * @param   boolean aka     Use AKA search for foreign language titles
  * @return  array           Associative array with id and title
  */
-function imdbSearch($title, $aka=null)
+function imdbSearch($title, $aka=null, $param)
 {
     global $imdbServer;
     global $imdbIdPrefix;
     global $CLIENTERROR;
-    global $cache;
+    $cache = true;
 
     $url    = $imdbServer.'/find?q='.urlencode($title);
     if ($aka) $url .= ';s=tt;site=aka';
 
-    $resp = httpClient($url, $cache);
+    $resp = httpClient($url, $cache, $param);
     if (!$resp['success']) $CLIENTERROR .= $resp['error']."\n";
 
     $data = array();
@@ -498,10 +498,9 @@ function imdbActorUrl($name, $id)
 function imdbActor($name, $actorid)
 {
     global $imdbServer;
-    global $cache;
 
     // search directly by id or via name?
-    $resp = httpClient(imdbActorUrl($name, $actorid), $cache);
+    $resp = httpClient(imdbActorUrl($name, $actorid), true);
 
     // if not direct match load best match
     if (preg_match('#<b>Popular Names</b>.+?<a\s+href="(.*?)">#i', $resp['data'], $m) ||
