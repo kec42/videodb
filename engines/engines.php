@@ -127,7 +127,7 @@ function engineSearch($find, $engine = 'imdb', $para1 = null, $para2 = null, $pa
     if (function_exists($func))
     {
         // check if additional parameters given to avoid overriding default values
-        $result = (isset($para1)) ? $func($find, $para1, $para2, $param3) : $func($find);
+        $result = (isset($para1)) ? $func($find, $para1, $para2, $para3) : $func($find);
     }
 
     // make sure all engines properly return the encoding type
